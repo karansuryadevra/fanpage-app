@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
-  await Firebase.initializeApp();
   runApp(MaterialApp(home: SignUp()));
 }
 
@@ -20,8 +19,6 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
     final firstnameController = TextEditingController();
     final lastnameController = TextEditingController();
     final emailController = TextEditingController();
@@ -38,18 +35,8 @@ class _SignUpState extends State<SignUp> {
 
     return Scaffold(
       body: Container(
-        // height: height,
-        // width: width,
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            // Container(
-            //   width: width,
-            //   height: height * 0.45,
-            //   child: Image.asset(
-            //     'assets/Karan_photo.jpg',
-            //     fit: BoxFit.fill,
-            //   ),
-            // ),
             const SizedBox(
               height: 100.0,
             ),

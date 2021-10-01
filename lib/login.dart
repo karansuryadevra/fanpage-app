@@ -7,10 +7,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(Login());
-  // await Firebase.initializeApp();
 }
 
 class Login extends StatefulWidget {
@@ -24,24 +23,8 @@ class _LoginState extends State<Login> {
   bool _initialized = false;
   bool _error = false;
 
-  // Define an async function to initialize FlutterFire
-  // void initializeFlutterFire() async {
-  //   // Wait for Firebase to initialize and set `_initialized` state to true
-  //   await Firebase.initializeApp();
-  // }
-
-  // @override
-  // void initState() {
-  //   initializeFlutterFire();
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
-
-    // FirebaseAuth auth = FirebaseAuth.instance;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     const userNotFoundSnackBar = SnackBar(content: Text('User not found!'));
@@ -113,9 +96,6 @@ class _LoginState extends State<Login> {
                           password: passwordController.text);
                   ScaffoldMessenger.of(context)
                       .showSnackBar(userLoggedInSnackBar);
-                  // print(
-                  //     '%%%%%%%%%%%%%%%%%%%%% user.email is %%%%%%%%%%%%%%%%%%%%%%%%%');
-                  // print(userCredential.user!.email);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Messages()));
                 } on FirebaseAuthException catch (e) {
@@ -177,62 +157,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-
-    // return Scaffold(
-    //     body: Center(
-    //         child: Column(
-    //   children: <Widget>[
-    //     TextFormField(
-    //       controller: emailController,
-    //       decoration: InputDecoration(
-    //         hintText: 'Email',
-    //         suffixIcon: const Icon(Icons.email),
-    //         border: OutlineInputBorder(
-    //           borderRadius: BorderRadius.circular(20.0),
-    //         ),
-    //       ),
-    //     ),
-    //     TextFormField(
-    //       controller: passwordController,
-    //       decoration: InputDecoration(
-    //         hintText: 'Password',
-    //         suffixIcon: const Icon(Icons.email),
-    //         border: OutlineInputBorder(
-    //           borderRadius: BorderRadius.circular(20.0),
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // )));
-
-    // return Scaffold(
-    //     appBar: AppBar(
-    //       title: const Text('Sample Code'),
-    //     ),
-    //     body: Center(
-    //         child: Column(
-    //       children: <Widget>[
-    //         TextFormField(
-    //           controller: emailController,
-    //           decoration: InputDecoration(
-    //             hintText: 'Email',
-    //             suffixIcon: const Icon(Icons.email),
-    //             border: OutlineInputBorder(
-    //               borderRadius: BorderRadius.circular(20.0),
-    //             ),
-    //           ),
-    //         ),
-    //         TextFormField(
-    //           controller: passwordController,
-    //           decoration: InputDecoration(
-    //             hintText: 'Password',
-    //             suffixIcon: const Icon(Icons.email),
-    //             border: OutlineInputBorder(
-    //               borderRadius: BorderRadius.circular(20.0),
-    //             ),
-    //           ),
-    //         ),
-    //       ],
-    //     )));
   }
 }
